@@ -1,0 +1,29 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.4",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Hello and welcome 👋",
+            "size": "ExtraLarge",
+            "isSubtle": true,
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "I'm the Weather bot. If you need to know a weather forecast at any time, just send me the location you need it for.",
+            "size": "Medium",
+            "isSubtle": true,
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "size": "default",
+            "isSubtle": true,
+            "text": "[made with 💖 by Lee Ford](https://github.com/leeford)",
+            "wrap": true,
+            "maxLines": 0
+        }
+    ]
+}
