@@ -15,12 +15,17 @@ export class WeatherBot extends ActivityHandler {
             // Get current weather for location
             const weather = new Weather();
             const weatherData = await weather.getWeather(locationName);
-            // Create card response
-            const template = new ACData.Template(WeatherCard);
-            const cardPayload = template.expand({ $root: weatherData });
-            const card = CardFactory.adaptiveCard(cardPayload);
 
-            await context.sendActivity(MessageFactory.attachment(card));
+            if (weatherData) {
+                // Create card response
+                const template = new ACData.Template(WeatherCard);
+                const cardPayload = template.expand({ $root: weatherData });
+                const card = CardFactory.adaptiveCard(cardPayload);
+
+                await context.sendActivity(MessageFactory.attachment(card));
+            } else {
+                await context.sendActivity(MessageFactory.text(`Sorry, I couldn't find weather for ${locationName}.`))
+            }
             await next();
         });
 

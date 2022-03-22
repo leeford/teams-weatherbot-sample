@@ -3,8 +3,8 @@ import { IWeatherData } from "../types/IWeatherData";
 
 export class Weather {
     public async getWeather(locationName: string) {
-        const weatherResponseData = (await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=${process.env.WeatherApiKey}&units=metric`)).data
         try {
+            const weatherResponseData = (await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${locationName}&appid=${process.env.WeatherApiKey}&units=metric`)).data
             if (weatherResponseData.coord.lon && weatherResponseData.coord.lat) {
                 const oneCallResponseData = (await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lon=${weatherResponseData.coord.lon}&lat=${weatherResponseData.coord.lat}&appid=${process.env.WeatherApiKey}&exclude=minutely,hourly&units=metric`)).data
                 const dailyForecastData: any[] = [];
